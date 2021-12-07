@@ -1,7 +1,9 @@
 import geocoder
 import numpy as np 
 import pandas as pd
-import pydeck as pdk
+import pydeck as pdk #今回は使わない
+import pulp
+from scipy.spatial import distance
 from typing import List, Any
 
 def get_place_datum(place:str) -> List[str]:
@@ -41,7 +43,34 @@ def str_list_to_numpy_array(str_list:List[str]):
     """
     return np.array(list(map(float,str_list)))
 
-#使えるかわからない
+def route_selection(df) -> List[str]:
+    """
+    pulpで経路最適化
+    """
+    df = df[['lat','long']]
+    w = distance.pdist(df.values) 
+    path_ = []
+    for i in df.index:
+        for j in df.index:
+            if i < j:
+                path_.append([i,j])
+    path_len = len(path_)
+    x = [ pulp.LpVariable(f'x{path_[i][0]}_{path_[i][1]}', cat='Binary') for i in range(path_len)]
+
+    p = pulp.LpProblem('tsp_mip', pulp.LpMinimize)
+    p += pulp.lpDot(w, x)
+    
+    for i in range(path_len):
+        p += x[i] <= 1
+    p+= pulp.lpSum(x) == len(path_) - 1
+    p.solve()
+    selected_route = []
+    for path,route_ in zip(path_, list(map(pulp.value,x))):
+        if route_ == 1.0:
+            selected_route.append(path)
+    return selected_route
+
+#今回が使用しない
 def view_path(places_list,lat,long):
     df = pd.DataFrame()
     df['name'] = [f"{places_list[i]}-{places_list[i+1]}" for i in range(len(lat) - 1)]
