@@ -112,12 +112,12 @@ def marker_decoration(type_:str)->Tuple[str]:
         'attraction':('red','heart'),
         'station': ('green','road'),
         'bus_stop':('lightblue','road'),
-        'administrative':('black', 'tent'),
+        'administrative':('black', 'info-sign'),
         'place_of_worship':('blue','eye-open')}
     
     if type_ in marker_map.keys():
         return marker_map[type_]
-    return ('lightblue','info-sign')
+    return ('pink','info-sign')
 
 
 #今回が使用しない
