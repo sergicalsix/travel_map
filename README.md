@@ -12,13 +12,11 @@ or ファイル入力(require)
 
 2. 出力ボタン->  ２D地図、経路
 
-### travel plan mode
-
 ### backend
 1.  Webアプリで名称を入力→google map api or mapbox系のapiで緯度経度を取得
 (場所を追加するごとに逐次的)
 
 できればラベル付けする(mapboxが有力)
 
-2. 2次元の地図はfolium、経路はpulpで出す
+2. 2次元の地図はfolium、経路はpulpで計算
 
