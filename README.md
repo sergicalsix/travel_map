@@ -1,6 +1,8 @@
 # travel_map
-## 簡易アプリの作成
+https://share.streamlit.io/sergicalsix/travel_map/main.py
 
+
+# メモ
 ### frontend
 - streamlit
 travel_plan
@@ -8,7 +10,7 @@ travel_plan
 
 or ファイル入力(require)
 
-2. 出力ボタン->  ２D(日本語), ３D地図(英語)の描画 
+2. 出力ボタン->  ２D地図、経路
 
 ### travel plan mode
 
@@ -18,5 +20,5 @@ or ファイル入力(require)
 
 できればラベル付けする(mapboxが有力)
 
-2. 2次元の地図はfolium、3Dの地図はpydeckのTrip Layer
+2. 2次元の地図はfolium、経路はpulpで出す
 
