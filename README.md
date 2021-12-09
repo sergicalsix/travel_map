@@ -4,9 +4,13 @@ https://share.streamlit.io/sergicalsix/travel_map/main.py
 
 ## 技術選定の理由
 
-- アプリについて
+### アプリについて
+
   無料でデプロイできる and 使用経験がある and 聴衆の方に馴染みがある可能性が高いことから`Streamlit`を採用
-- 地図について
+
+
+### 地図について
+  
   マーカーのカスタマイズ性 and 地図の中身が日本語 and 実装が簡単なので`folium`を選択。
 
 他の選択肢として、デフォルト(`streamlit`)、`(geo)pandas`、`skmob`、`pydeck`などがあった。
@@ -14,7 +18,8 @@ https://share.streamlit.io/sergicalsix/travel_map/main.py
 
 余談だが、地図について 1 行で`html`に書き出すことが可能である。
 
-- 経路探索と移動時間の計算
+###  経路探索と移動時間の計算
+  
   本実装ではまず`scipy.spatial`の`distance`メソッドで空間を無視した全ユークリッド距離を算出した。
   理由はピュア python や numpy で実装に他に比べて最も高速だからである。
 
@@ -28,6 +33,7 @@ https://share.streamlit.io/sergicalsix/travel_map/main.py
 計算量が多いものは高速に、少ないものは正確に計算を行ったためである。
 ( 全距離は地点数 n に対して計算量が O(n^2)のオーダーに対して、
 一方で選択された経路は（今回のアルゴリズムでは）計算量が O(n)である)
+
 
 ## カスタマイズ Tips
 
