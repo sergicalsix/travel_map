@@ -28,6 +28,8 @@ st.markdown("""-----""")
 
 
 raw_places = st.text_input('行きたい場所をスペース区切りで入力してください')
+st.markdown('入力例: 京都駅　銀閣寺　金閣寺  仁和寺')
+
 places_list = raw_places.split()
 if raw_places:
     raw_place_data = np.array(get_place_data(places_list))
