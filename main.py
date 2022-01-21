@@ -53,8 +53,9 @@ if raw_places:
         link = f'[{i+1} : {place_url[0]}]({place_url[1]})'
         st.markdown(link, unsafe_allow_html=True)
     st.markdown('---------')
-    map_flag = st.checkbox('地図を出力')
-    st.markdown('---------')
+    #map_flag = st.checkbox('地図を出力')
+    map_flag = True
+    #st.markdown('---------')
 
 
 
